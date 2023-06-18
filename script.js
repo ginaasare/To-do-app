@@ -16,6 +16,7 @@ function addTask()
         li.appendChild(span);
     }
     new_inputBox.value = "";
+    saveData();
 
 }
 
@@ -32,11 +33,21 @@ false); */
 listContainer.addEventListener("click", function(e) {
     if (e.target.tagName === "LI") {
       e.target.classList.toggle("checked");
+      saveData();
     } else if (e.target.tagName === "IMG") {
       var listItem = e.target.closest("li");
       if (listItem) {
         listItem.remove();
       }
+      saveData();
     }
   }, false);
-  
+
+  function saveData(){
+    localStorage.setItem("data", listContainer.innerHTML);
+
+  }
+  function loadTodo(){
+    listContainer.innerHTML = localStorage.getItem("data");
+  }
+  loadTodo();
