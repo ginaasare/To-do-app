@@ -3,6 +3,9 @@
     <head>
         <meta charset="utf-8"/>  
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="styles.css"/>
         <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   
@@ -17,13 +20,14 @@
                 </h2>
             </div>
             <div class="new-todo">
-                <div class="row">
+                
                     <input type="text" id="new-input-box" placeholder="Create a new todo..."/>
-                    <button onclick="addTask()"> Add</button>
+                    <!--<button onclick="addTask()"> Add</button>-->
 
-                </div>
+                
                              
             </div>
+          
             <div class="todo-app">
                 <ul id="list-container">
                     <!--<li class="checked">Complete online JavaScript Course</li>
@@ -34,9 +38,27 @@
                     <li>Complete Todo App Frontend Mentor</li>--> 
                 </ul>
                 
+               
             </div>
+           
+            <div class="controls">
+                <p>5 items left</p>
+                <div class="filters">
+                
+                    <span id="all">All</span>
+                    <span id="active">Active</span>
+                    <span id="completed">Completed</span>
+                    <span id="clear">Clear Completed</span>
 
-       <!--removed the container div--> 
+                </div>
+                
+                
+            </div>
+            <div class="rearrange">
+                <p>Drag and drop to reorder list</p>
+            </div>
+            <br/>
+            <br/>
        <div class="attribution">
         Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
         Coded by <a href="#">Georgina Badu Asare</a>.
