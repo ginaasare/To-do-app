@@ -129,7 +129,7 @@ ul li::before{
     position: absolute;
     height: 28px;
     width: 28px;
-    background-image: url(images/unchecked.png);
+    background-image: url(images/unchecked-icon.svg);
     background-size: cover;
     background-position: center;
     top: 9px;
@@ -142,7 +142,7 @@ ul li.checked{
     text-decoration:line-through;
 }
 ul li.checked::before{
-   background-image: url(images/check-circle.svg); /*check svg given was not appearing*/
+   background-image: url(images/checked-icon.svg); /*check svg given was not appearing*/
    
    
 }
