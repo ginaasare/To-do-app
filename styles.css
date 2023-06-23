@@ -12,12 +12,42 @@ body{
     background-repeat: no-repeat;
     width:100%;
     padding: 10px;
-    background-color: hsl(236, 33%, 92%);
+    background-color: hsl(0, 0%, 96%);
     background-size:contain;
     font-size: 18px;
     
 }
+.dark-theme{
+    background-color:  hsl(235, 21%, 11%);
+    color: hsl(234, 39%, 85%);
+    background-image: url('images/bg-desktop-dark.jpg');
+}
 
+.dark-theme .todo-app{
+    background: hsl(235, 24%, 19%);
+
+}
+.dark-theme .new-todo{
+    background: hsl(235, 24%, 19%);
+
+}
+.dark-theme .controls{
+    background: hsl(235, 24%, 19%);
+    color:hsl(233, 14%, 35%);
+    border-top: 1px solid hsl(233, 14%, 35%);
+
+}
+.dark-theme input{
+    color: hsl(236, 33%, 92%)
+}
+.dark-theme ul li{
+    color: hsl(236, 33%, 92%);
+    border-bottom: solid 1px hsl(233, 14%, 35%); 
+}
+.dark-theme ul li.checked{
+    color: hsl(233, 14%, 35%);
+    text-decoration:line-through;
+}
 .header{
     color:#fff;
 
@@ -35,19 +65,23 @@ body{
     
     
 }
-.theme{
-    cursor: pointer;
-    
+.active{
+    cursor:pointer;
 }
+
 
 .new-todo{
    
     max-width: 540px;
     background: hsl(0, 0%, 98%);
-    margin: 10px auto 10px;
+    margin: 10px auto 15px;
     padding: 20px 30px 70px;
     border-radius: 5px;
     max-height: 20px;
+}
+.new-todo span{
+    display:flex;
+    
 }
 
 .controls{
@@ -83,20 +117,12 @@ body{
     min-height: 50px;
     overflow: hidden;
     min-height:100px;
+    
    
 }
 
-.row{
-    display:flex;
-    align-items: center;
-    justify-content: space-between;
-    background: hsl(0, 0%, 98%);
-    border-radius: 30px;
-    padding-left:20px;
-    
-}
 
-input{
+.input-box{
     flex:1;
     border:none;
     outline:none;
@@ -104,7 +130,10 @@ input{
     padding:10px;
    color:hsl(235, 19%, 35%);
 }
-
+.input-image{
+    width: 6%;
+    height: auto;
+}
 ul li{
     list-style: none;
     font-size: 18px;
@@ -139,6 +168,7 @@ ul li::before{
 }
 ul li:hover::before {
     background-image: url(images/unchecked-icon-hover.svg);
+
   }
 
 ul li.checked{
@@ -157,6 +187,15 @@ ul li span{
    
 }
 
+.cross-image{
+    display:none;
+    cursor:pointer;
+
+}
+li:hover .cross-image{
+    display: inline-block;
+}
+
 .rearrange{
     display:flex;
     justify-content: center;
@@ -168,4 +207,7 @@ ul li span{
 
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); }
+.dark-theme .attribution{
+    color: hsl(233, 14%, 35%);
+}
 
