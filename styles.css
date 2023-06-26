@@ -127,7 +127,7 @@ ul li.checked{
 }
 ul li.checked::before{
    background-image: url(images/checked-icon.svg); /*check svg given was not appearing*/
-   
+  
    
 }
 

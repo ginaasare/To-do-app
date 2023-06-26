@@ -110,7 +110,7 @@ listContainer.addEventListener("click", function(e) {
     }
   }, false);
 
-
+  
 
   /*Using localStorage to store the data */
 
