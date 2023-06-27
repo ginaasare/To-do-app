@@ -63,7 +63,9 @@ function addTask() {
       id: Date.now(),
       name: new_inputBox.value,
       completed: false,
+      
     };
+    
     tasks.push(task);
     updateCounter();
     renderTasks();
@@ -78,6 +80,7 @@ function renderTasks() {
     let li = document.createElement("li");
     li.innerHTML = task.name;
     li.setAttribute("data-id", task.id);
+    
     if (task.completed) {
       li.classList.add("completed");
     }
