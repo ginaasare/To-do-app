@@ -64,6 +64,7 @@ function addTask() {
       name: new_inputBox.value,
       completed: false,
     };
+      
     tasks.push(task);
     updateCounter();
     renderTasks();
@@ -77,7 +78,7 @@ function renderTasks() {
   tasks.forEach((task) => {
     let li = document.createElement("li");
     li.innerHTML = task.name;
-    let firstItem= listContainer.firstChild;
+    let firstItem=listContainer.firstChild;
     listContainer.insertBefore(li, firstItem);
     li.setAttribute("data-id", task.id);
     if (task.completed) {
@@ -101,29 +102,29 @@ function renderTasks() {
       toggleTaskCompletion(task.id);
     });
 
-  
+
+    
+
+    li.addEventListener("click", function(e) {
+        if (e.target.tagName === "LI") {
+          e.target.classList.toggle("checked");
+          saveData();
+        } else if (e.target.tagName === "IMG") {
+          var listItem = e.target.closest("li");
+          if (listItem) {
+            listItem.remove();
+          }
+          saveData();
+        }
+      }, false);
+    
 
   });
 
   
 }
 
-listContainer.addEventListener(
-  "click",
-  function (e) {
-    if (e.target.tagName === "LI") {
-        e.target.classList.toggle("checked");
-        saveData();
-    } else if (e.target.tagName === "IMG") {
-      var listItem = e.target.closest("li");
-      if (listItem) {
-       listItem.remove();
-       saveData();
-      }
-    }
-  },
-  false
-);
+
 
 function toggleTaskCompletion(taskId) {
   tasks = tasks.map((task) => {
@@ -192,3 +193,7 @@ function loadTodo() {
 }
 
 loadTodo();
+
+
+
+
