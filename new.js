@@ -118,8 +118,9 @@ function renderTasks() {
     let firstItem= listContainer.firstChild;
     listContainer.insertBefore(li, firstItem);
     li.setAttribute("data-id", task.id);
+    li.dataset.id =task.id;
     if (task.completed) {
-      li.classList.add("completed");
+      li.classList.add("checked");
     }
 
     let span = document.createElement("span");
@@ -129,6 +130,8 @@ function renderTasks() {
     span.appendChild(CloseImage);
     li.appendChild(span);/*adding the class cross-image to the cross icon*/
 
+
+
  /*an eventlistener for the hover effect on the cross*/
     li.addEventListener("mouseover", function () {
       CloseImage.style.display = "inline-block";
@@ -137,8 +140,17 @@ function renderTasks() {
       CloseImage.style.display = "none";
     });
 
-    li.addEventListener("click", function () {
-       toggleTaskCompletion(task.id);
+    li.addEventListener("click", function (event) {
+        const clickedElement = event.target;
+            if(clickedElement === CloseImage){
+                removeTask(task.id);
+                li.remove();
+            }
+            else{
+                toggleTaskCompletion(task.id);
+            }
+
+       
        
     });
 
@@ -149,88 +161,21 @@ function renderTasks() {
   
 }
 
-
-listContainer.addEventListener("click",function(e){
-  if(e.target.tagName==="LI" ){
-      e.target.classList.toggle("checked");      
-      updateCounter();      
-      saveData();
-      
-      
-}
-  else if(e.target.tagName === "IMG"){
-    
-      var listItem = e.target.closest("li");
-     if(listItem){
-      listItem.remove();
-      saveData();
-      updateCounter();
-      
-     }
-  }
-  },
-); 
-/*checking an item as done or removing an item */
-
-/*listContainer.addEventListener("click", function (e) {
-  if (e.target.tagName === "LI") {
-    e.target.classList.toggle("checked");
-    const taskId = e.target.getAttribute("data-id");
-    toggleTaskCompletion(taskId);
-  } else if (e.target.tagName === "IMG") {
-    var listItem = e.target.closest("li");
-    if (listItem) {
-      const taskId = listItem.getAttribute("data-id");
-      removeTask(taskId);
-    }
-  }
-}, false);*/
-
-
-
-/*listContainer.addEventListener(
-  "click",
-  function (e) {
-    if (e.target.tagName === "LI") {
-        e.target.classList.toggle("checked");
-        saveData();
-    } else if (e.target.tagName === "IMG") {
-      var listItem = e.target.closest("li");
-      if (listItem) {
-       listItem.remove();
-       saveData();
-      }
-    }
-  },
-  false
-);*/
-
 function toggleTaskCompletion(taskId) {
-  tasks = tasks.map((task) => {
-    if (task.id === taskId) {
-      task.completed = !task.completed;
-      /*e.target.classList.toggle("checked");*/
-      saveData();
-      
-    }
-    else if(e.target.tagName === "IMG"){
-    
-      var listItem = e.target.closest("li");
-     if(listItem){
-      listItem.remove();
-    
-      saveData();
-      
-     }
-  } 
-    return task;
-  });
-  updateCounter();
-  renderTasks();
-  saveData();
- 
-}
+    tasks = tasks.map((task) => {
+      if (task.id === taskId) {
+        task.completed = !task.completed;
+      }
+      return task;
+    });
+    updateCounter();
+    renderTasks();
+    saveData();
+  }
 
+
+
+  
 function removeTask(taskId) {
   tasks = tasks.filter((task) => task.id !== taskId);
   updateCounter();
@@ -245,14 +190,14 @@ function filterTasks(filter) {
         li.style.display = "block";
         break;
       case "active":
-        if (li.classList.contains("completed")) {
+        if (li.classList.contains("checked")) {
           li.style.display = "none";
         } else {
           li.style.display = "block";
         }
         break;
       case "completed":
-        if (li.classList.contains("completed")) {
+        if (li.classList.contains("checked")) {
           li.style.display = "block";
         } else {
           li.style.display = "none";

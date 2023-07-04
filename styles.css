@@ -14,6 +14,8 @@ body{
     background-color: hsl(0, 0%, 96%);
     background-size:contain;
     font-size: 18px;
+    overflow:hidden;
+   
     
 }
 
@@ -36,6 +38,7 @@ body{
 
 .active{
     cursor:pointer;
+
 }
 
 
@@ -77,6 +80,9 @@ body{
     min-height: 50px;
     overflow: hidden;
     min-height:100px;
+    max-height: 300px;
+    overflow: auto;
+    scroll-behavior: smooth;
       
 }
 
@@ -159,14 +165,12 @@ li:hover .cross-image{
     color: hsl(235, 19%, 35%);
     
 }
-.controls span:active{
-    color: hsl(220, 98%, 61%);
-    
-}
+
 .filters span{
     margin: 0 8px;
     font-size: 18px;
     cursor: pointer;
+    
 }
 
 .dark-theme{
@@ -213,8 +217,8 @@ li:hover .cross-image{
     color: hsl(236, 33%, 92%);
     
 }
-.dark-theme .controls span:active{
-    color: hsl(220, 98%, 61%);
+dark-theme .controls span:active{
+    color: #3a7bfd;
     
 }
 
