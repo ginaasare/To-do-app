@@ -162,12 +162,6 @@ function renderTasks() {
  }
   
 
-  
-  
-  
-  
-
-
 function toggleTaskCompletion(taskId) {
     tasks = tasks.map((task) => {
       if (task.id === taskId) {
