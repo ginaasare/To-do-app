@@ -153,13 +153,20 @@ function renderTasks() {
        
        
     });
-
+     // Drag and drop functionality
+     li.setAttribute("draggable", "true");
+     li.addEventListener("dragstart", dragStart);
+     li.addEventListener("dragover", dragOver);
+     li.addEventListener("drop", drop);
+   });
+ }
   
 
-  });
-
   
-}
+  
+  
+  
+
 
 function toggleTaskCompletion(taskId) {
     tasks = tasks.map((task) => {
@@ -228,5 +235,31 @@ function loadTodo() {
   listContainer.innerHTML = localStorage.getItem("info");
   counterElement.textContent = localStorage.getItem("items-left");
 }
+
+function dragStart(event) {
+    event.target.classList.add("dragging");
+    event.dataTransfer.setData("text/plain", event.target.dataset.id);
+  }
+  
+  function dragOver(event) {
+    event.preventDefault();
+  }
+  
+  function drop(event) {
+    event.preventDefault();
+    const sourceId = event.dataTransfer.getData("text/plain");
+    const targetId = event.target.dataset.id;
+    if (sourceId && targetId && sourceId !== targetId) {
+      const sourceIndex = tasks.findIndex((task) => task.id === +sourceId);
+      const targetIndex = tasks.findIndex((task) => task.id === +targetId);
+      if (sourceIndex !== -1 && targetIndex !== -1) {
+        const [removed] = tasks.splice(sourceIndex, 1);
+        tasks.splice(targetIndex, 0, removed);
+        renderTasks();
+        saveData();
+      }
+    }
+  }
+  
 
 loadTodo();
